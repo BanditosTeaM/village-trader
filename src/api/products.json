@@ -1,4 +1,5 @@
 [
   { "id": 1, "name": "Камень", "quantity": 10 },
-  { "id": 2, "name": "Дерево", "quantity": 20 }
+  { "id": 2, "name": "Дерево", "quantity": 20 },
+  { "id": 3, "name": "Пиво", "quantity": 0 }
 ]
