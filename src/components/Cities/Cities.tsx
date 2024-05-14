@@ -1,24 +1,13 @@
 import "./Cities.css";
 import citiesData from "@api/cities.json";
-import productsData from "@api/products.json";
 import { GraphDisplay } from "../GraphDisplay/GraphDisplay";
-import { useState } from "react";
 
-export const Cities = () => {
-  const [products, setProducts] = useState(productsData);
+interface CitiesProps {
+  products: { id: number; name: string; quantity: number }[];
+  onChangeProducts: (id: number, newQuantity: number, price: number) => void;
+}
 
-  const onChange = (id: number, newQuantity: number) => {
-    console.log(newQuantity);
-
-    setProducts((prevProducts) =>
-      prevProducts.map((product) =>
-        product.id === id
-          ? { ...product, quantity: product.quantity + newQuantity }
-          : product
-      )
-    );
-  };
-
+export const Cities = ({ products, onChangeProducts }: CitiesProps) => {
   return (
     <>
       <div>
@@ -32,11 +21,11 @@ export const Cities = () => {
       <div>
         {products.map((product) => (
           <div key={product.id}>
-            {product.name} - {product.quantity} шт
+            {product.name}
             <GraphDisplay
               idGraph={product.name}
               id={product.id}
-              onChange={onChange}
+              onChangeProducts={onChangeProducts}
             />
           </div>
         ))}
