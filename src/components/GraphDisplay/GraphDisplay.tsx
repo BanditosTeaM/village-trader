@@ -5,14 +5,18 @@ import { useEffect, useRef, useState } from "react";
 interface GraphDisplayProps {
   idGraph: string;
   id: number;
-  onChange: (id: number, newQuantity: number) => void;
+  onChangeProducts: (id: number, newQuantity: number, price: number) => void;
 }
 
-export const GraphDisplay = ({ idGraph, id, onChange }: GraphDisplayProps) => {
+export const GraphDisplay = ({
+  idGraph,
+  id,
+  onChangeProducts,
+}: GraphDisplayProps) => {
   const myChartRef = useRef<Chart | null>(null);
   const [quantity, setQuantity] = useState(1);
 
-  const [data, setData] = useState<number[]>(
+  const [data, setData] = useState<number[]>(() =>
     Array.from({ length: 7 }, () => Math.floor(Math.random() * (11 - 4) + 4))
   );
 
@@ -67,10 +71,8 @@ export const GraphDisplay = ({ idGraph, id, onChange }: GraphDisplayProps) => {
 
   const handleButtonClick = () => {
     if (data.length > 0) {
-      onChange(id, quantity);
-      console.log(quantity);
-
-      console.log("Цена: " + data[data.length - 1]);
+      const price = quantity * data[data.length - 1];
+      onChangeProducts(id, quantity, price);
     }
   };
 
