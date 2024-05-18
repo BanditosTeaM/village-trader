@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { Cities } from "../Cities";
 import { Storage } from "../Storage";
 import { TaskManager } from "../TaskManager";
+import { GraphProducts } from "../GraphProducts";
+import { Routes, Route, Navigate } from "react-router-dom";
 import productsData from "@api/products.json";
 import "./App.css";
 
@@ -59,7 +61,20 @@ export const App = () => {
     <>
       <div className="container">
         <header>Деревенский трейдер</header>
-        <Cities products={products} onChangeProducts={buyProducts} />
+        <Cities />
+        <Routes>
+          <Route path="/" element={<Navigate to="/city/1" />} />
+
+          <Route
+            path="/city/:cityId"
+            element={
+              <GraphProducts
+                products={products}
+                onChangeProducts={buyProducts}
+              />
+            }
+          />
+        </Routes>
         <div>
           <Storage products={products} />
           <div>
