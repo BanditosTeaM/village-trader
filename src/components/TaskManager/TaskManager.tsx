@@ -46,10 +46,10 @@ export const TaskManager = ({
   const count = 3;
 
   useEffect(() => {
-    generateRandomTask(products, count);
+    setTasks(generateRandomTask(products, count));
 
     const intervalId = setInterval(() => {
-      generateRandomTask(products, count);
+      setTasks(generateRandomTask(products, count));
     }, 10000);
 
     return () => clearInterval(intervalId);
@@ -73,7 +73,6 @@ export const TaskManager = ({
           <div key={index}>
             Необходимо {task.quantity} шт. {task.name} <br />
             Оплата: {task.payment} <br />
-            {index}
             <button
               onClick={() =>
                 handleButtonClick(index, task.id, task.quantity, task.payment)
