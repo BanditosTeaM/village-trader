@@ -1,33 +1,15 @@
 import "./Cities.css";
 import citiesData from "@api/cities.json";
-import { GraphDisplay } from "../GraphDisplay/GraphDisplay";
+import { Link } from "react-router-dom";
 
-interface CitiesProps {
-  products: { id: number; name: string; quantity: number }[];
-  onChangeProducts: (id: number, newQuantity: number, price: number) => void;
-}
-
-export const Cities = ({ products, onChangeProducts }: CitiesProps) => {
+export const Cities = () => {
   return (
     <>
       <div>
         {citiesData.map((city) => (
-          <a key={city.id} href="#">
+          <Link key={city.id} to={`/city/${city.id}`}>
             {city.name}
-          </a>
-        ))}
-      </div>
-
-      <div>
-        {products.map((product) => (
-          <div key={product.id}>
-            {product.name}
-            <GraphDisplay
-              idGraph={product.name}
-              id={product.id}
-              onChangeProducts={onChangeProducts}
-            />
-          </div>
+          </Link>
         ))}
       </div>
     </>
