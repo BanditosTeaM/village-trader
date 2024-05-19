@@ -62,26 +62,31 @@ export const App = () => {
       <div className="container">
         <header>Деревенский трейдер</header>
         <Cities />
-        <Routes>
-          <Route path="/" element={<Navigate to="/city/1" />} />
-
-          <Route
-            path="/city/:cityId"
-            element={
-              <GraphProducts
-                products={products}
-                onChangeProducts={buyProducts}
-              />
-            }
-          />
-        </Routes>
-        <div>
-          <Storage products={products} />
-          <div>
-            <div>День: {day}</div>
-            <div>Деньги: {money}</div>
+        <div className="content">
+          <div className="left-side">
+            <Storage products={products} />
+            <div>
+              <div>День: {day}</div>
+              <div>Деньги: {money}</div>
+            </div>
+            <TaskManager products={products} onChangeProducts={sellProducts} />
           </div>
-          <TaskManager products={products} onChangeProducts={sellProducts} />
+
+          <div className="right-side">
+            <Routes>
+              <Route path="/" element={<Navigate to="/city/1" />} />
+
+              <Route
+                path="/city/:cityId"
+                element={
+                  <GraphProducts
+                    products={products}
+                    onChangeProducts={buyProducts}
+                  />
+                }
+              />
+            </Routes>
+          </div>
         </div>
       </div>
     </>
