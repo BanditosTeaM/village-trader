@@ -1,14 +1,14 @@
 [
-  { "id": 1, "name": "Камень", "quantity": 10, "idCity": 1 },
-  { "id": 2, "name": "Дерево", "quantity": 20, "idCity": 1 },
-  { "id": 3, "name": "Пиво", "quantity": 0, "idCity": 1 },
-  { "id": 4, "name": "Сталь", "quantity": 0, "idCity": 2 },
-  { "id": 5, "name": "Резина", "quantity": 0, "idCity": 2 },
-  { "id": 6, "name": "Метал", "quantity": 0, "idCity": 2 },
-  { "id": 7, "name": "Гранит", "quantity": 0, "idCity": 3 },
-  { "id": 8, "name": "Пластик", "quantity": 0, "idCity": 3 },
-  { "id": 9, "name": "Хлопок", "quantity": 0, "idCity": 3 },
-  { "id": 10, "name": "Эль", "quantity": 0, "idCity": 4 },
-  { "id": 11, "name": "Майбок", "quantity": 0, "idCity": 4 },
-  { "id": 12, "name": "Портер", "quantity": 0, "idCity": 4 }
+  { "id": 1, "name": "🧱 Камень", "quantity": 10, "idCity": 1 },
+  { "id": 2, "name": "🌲 Дерево", "quantity": 20, "idCity": 1 },
+  { "id": 3, "name": "🍺 Пиво", "quantity": 0, "idCity": 1 },
+  { "id": 4, "name": "🔩 Сталь", "quantity": 0, "idCity": 2 },
+  { "id": 5, "name": "🧽 Резина", "quantity": 0, "idCity": 2 },
+  { "id": 6, "name": "⚙️ Метал", "quantity": 0, "idCity": 2 },
+  { "id": 7, "name": "🧱 Гранит", "quantity": 0, "idCity": 3 },
+  { "id": 8, "name": "♻️ Пластик", "quantity": 0, "idCity": 3 },
+  { "id": 9, "name": "🌿 Хлопок", "quantity": 0, "idCity": 3 },
+  { "id": 10, "name": "🍻 Эль", "quantity": 0, "idCity": 4 },
+  { "id": 11, "name": "🍶 Майбок", "quantity": 0, "idCity": 4 },
+  { "id": 12, "name": "🍷 Портер", "quantity": 0, "idCity": 4 }
 ]
