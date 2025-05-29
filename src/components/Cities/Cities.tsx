@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export const Cities = () => {
   return (
     <>
-      <div>
+      <div className="city-list">
         {citiesData.map((city) => (
           <Link key={city.id} to={`/city/${city.id}`}>
             {city.name}
