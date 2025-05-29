@@ -19,8 +19,8 @@ export const GraphProducts = ({
     <>
       <div>
         {cityProducts.map((product) => (
-          <div key={product.id}>
-            {product.name}
+          <div className="chart-card" key={product.id}>
+            <span className="card-name">{product.name}</span>
             <GraphDisplay
               idGraph={product.name}
               id={product.id}
