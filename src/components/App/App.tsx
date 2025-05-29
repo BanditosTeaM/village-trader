@@ -12,6 +12,10 @@ export const App = () => {
   const [money, setMoney] = useState(500);
   const [products, setProducts] = useState(productsData);
 
+  const handleButtonClick = () => {
+    alert("Ты нашел посхалку, поздравляю и желаю хорошей игры!");
+  };
+
   const buyProducts = (id: number, newQuantity: number, price: number) => {
     const totalCost = newQuantity * price;
 
@@ -60,14 +64,20 @@ export const App = () => {
   return (
     <>
       <div className="container">
-        <header>Деревенский трейдер</header>
+        <header className="game-name">
+          <button onClick={() => handleButtonClick()}>
+            Деревенский трейдер
+          </button>
+        </header>
         <Cities />
         <div className="content">
           <div className="left-side">
-            <Storage products={products} />
-            <div>
-              <div>День: {day}</div>
-              <div>Деньги: {money}</div>
+            <div className="info-panel">
+              <Storage products={products} />
+              <div>
+                <div>📅 День: {day}</div>
+                <div>💰 Деньги: {money} ₣</div>
+              </div>
             </div>
             <TaskManager products={products} onChangeProducts={sellProducts} />
           </div>
