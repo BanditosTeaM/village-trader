@@ -33,10 +33,6 @@ export const GraphDisplay = ({
     const canvas = document.getElementById(idGraph) as HTMLCanvasElement;
     const ctx = canvas.getContext("2d");
 
-    if (myChartRef.current) {
-      myChartRef.current.destroy();
-    }
-
     if (ctx) {
       myChartRef.current = new Chart(ctx, {
         type: "line",
@@ -44,14 +40,16 @@ export const GraphDisplay = ({
           labels: [1, 2, 3, 4, 5, 6, 7],
           datasets: [
             {
-              label: "Цена за штуку",
+              label: "Цена за штуку, ₣",
               data: data,
               fill: false,
               borderColor: "rgb(75, 192, 192)",
+              borderWidth: 1,
             },
           ],
         },
         options: {
+          animation: false,
           scales: {
             y: {
               beginAtZero: true,
@@ -79,17 +77,19 @@ export const GraphDisplay = ({
   return (
     <>
       <section>
-        <div style={{ width: "400px", height: "150px" }}>
+        <div className="chart-component">
           <canvas id={idGraph}></canvas>
         </div>
-        <div>
+        <div className="chart-action">
           <input
+            className="chart-input"
             type="number"
             value={quantity}
             onChange={(e) => setQuantity(parseInt(e.target.value))}
-            placeholder="Выбери количество"
           />
-          <button onClick={handleButtonClick}>Последнее число</button>
+          <button className="chart-button" onClick={handleButtonClick}>
+            Купить
+          </button>
         </div>
       </section>
     </>

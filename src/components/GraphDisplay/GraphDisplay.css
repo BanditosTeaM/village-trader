@@ -1,0 +1,51 @@
+canvas {
+  width: 370px !important;
+  height: 170px !important;
+  display: block;
+}
+
+/* .chart-component {
+  width: 500px;
+  height: 150px;
+} */
+
+.chart-action {
+  margin-top: 5px;
+  margin-left: 125px;
+}
+
+.chart-input {
+  background-color: transparent;
+  border: none;
+  border-bottom: solid 1px white;
+  color: white;
+  outline: none;
+  width: 25px;
+  padding-left: 15px;
+  padding-bottom: 5px;
+}
+
+.chart-input::-webkit-inner-spin-button,
+.chart-input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.chart-input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.chart-button {
+  width: 70px;
+  height: 30px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  color: white;
+  margin-left: 10px;
+}
+
+.chart-button:hover {
+  background-color: #1d3f4e;
+  border-radius: 5px;
+}
