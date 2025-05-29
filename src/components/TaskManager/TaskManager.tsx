@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-
+import "./TaskManager.css";
 interface TaskManagerProps {
   products: { id: number; name: string; quantity: number }[];
   onChangeProducts: (id: number, newQuantity: number, paymant: number) => void;
@@ -53,6 +53,7 @@ export const TaskManager = ({
     }, 10000);
 
     return () => clearInterval(intervalId);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleButtonClick = (
@@ -66,14 +67,16 @@ export const TaskManager = ({
   };
 
   return (
-    <section>
+    <section className="task-list">
       <h2>Список задач</h2>
+
       {tasks.length > 0 ? (
         tasks.map((task, index) => (
-          <div key={index}>
-            Необходимо {task.quantity} шт. {task.name} <br />
+          <div className="task" key={index}>
+            Задача <br /> {task.quantity} шт. {task.name} <br />
             Оплата: {task.payment} <br />
             <button
+              className="button-task"
               onClick={() =>
                 handleButtonClick(index, task.id, task.quantity, task.payment)
               }

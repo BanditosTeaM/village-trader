@@ -1,0 +1,35 @@
+.task-list {
+  background: transparent;
+  color: white;
+  padding: 0 16px 16px 16px;
+  border-radius: 12px;
+  margin-top: 35px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
+  text-align: center;
+}
+
+.task {
+  border: solid 1px;
+  padding: 5px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.button-task {
+  margin: 0 auto;
+  display: block;
+  margin-top: 15px;
+  width: 100px;
+  height: 30px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  color: white;
+}
+
+.button-task:hover {
+  background-color: #1d3f4e;
+  border-radius: 5px;
+}
