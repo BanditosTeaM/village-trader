@@ -1,60 +1,22 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import useStore from "@/store";
 import "./TaskManager.css";
-interface TaskManagerProps {
-  products: { id: number; name: string; quantity: number }[];
-  onChangeProducts: (id: number, newQuantity: number, paymant: number) => void;
-}
 
-interface Task {
-  id: number;
-  name: string;
-  quantity: number;
-  payment: number;
-}
-
-const generateRandomTask = (
-  products: { id: number; name: string; quantity: number }[],
-  count: number
-) => {
-  const newTask = [];
-
-  if (products.length === 0) {
-    return [];
-  }
-
-  for (let i = 0; i < count; i++) {
-    const randomIndex = Math.floor(Math.random() * products.length);
-    const randomProduct = products[randomIndex];
-    const randomQuantity = Math.floor(Math.random() * 5) + 1;
-
-    newTask.push({
-      id: randomProduct.id,
-      name: randomProduct.name,
-      quantity: randomQuantity,
-      payment: randomQuantity * 30,
-    });
-  }
-
-  return newTask;
-};
-
-export const TaskManager = ({
-  products,
-  onChangeProducts,
-}: TaskManagerProps) => {
-  const [tasks, setTasks] = useState<Task[]>([]);
-  const count = 3;
+export const TaskManager = () => {
+  const sellProduct = useStore((state) => state.sellProduct);
+  const productCount = useStore((state) => state.countProduct);
+  const generateTasks = useStore((state) => state.generateTasks);
+  const removeTask = useStore((state) => state.removeTask);
+  const tasks = useStore((state) => state.tasks);
 
   useEffect(() => {
-    setTasks(generateRandomTask(products, count));
-
+    generateTasks();
     const intervalId = setInterval(() => {
-      setTasks(generateRandomTask(products, count));
+      generateTasks();
     }, 10000);
 
     return () => clearInterval(intervalId);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [generateTasks]);
 
   const handleButtonClick = (
     index: number,
@@ -62,8 +24,8 @@ export const TaskManager = ({
     quantity: number,
     paymant: number
   ) => {
-    onChangeProducts(id, quantity, paymant);
-    setTasks((prevTasks) => prevTasks.filter((_, i) => i !== index));
+    sellProduct(id, quantity, paymant);
+    removeTask(index);
   };
 
   return (
@@ -73,7 +35,8 @@ export const TaskManager = ({
       {tasks.length > 0 ? (
         tasks.map((task, index) => (
           <div className="task" key={index}>
-            Задача <br /> {task.quantity} шт. {task.name} <br />
+            Задача <br /> {task.quantity} шт. {task.name} (у тебя{" "}
+            {productCount(task.id)} шт) <br />
             Оплата: {task.payment} <br />
             <button
               className="button-task"

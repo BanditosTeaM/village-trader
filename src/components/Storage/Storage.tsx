@@ -1,8 +1,8 @@
-interface StorageProps {
-  products: { id: number; name: string; quantity: number }[];
-}
+import useStore from "@/store";
 
-export const Storage = ({ products }: StorageProps) => {
+export const Storage = () => {
+  const products = useStore((state) => state.products);
+
   return (
     <>
       <section>

@@ -1,18 +1,16 @@
 import Chart from "chart.js/auto";
 import "./GraphDisplay.css";
 import { useEffect, useRef, useState } from "react";
+import useStore from "@/store";
 
 interface GraphDisplayProps {
   idGraph: string;
   id: number;
-  onChangeProducts: (id: number, newQuantity: number, price: number) => void;
 }
 
-export const GraphDisplay = ({
-  idGraph,
-  id,
-  onChangeProducts,
-}: GraphDisplayProps) => {
+export const GraphDisplay = ({ idGraph, id }: GraphDisplayProps) => {
+  const buyProduct = useStore((state) => state.buyProduct);
+
   const myChartRef = useRef<Chart | null>(null);
   const [quantity, setQuantity] = useState(1);
 
@@ -70,7 +68,7 @@ export const GraphDisplay = ({
   const handleButtonClick = () => {
     if (data.length > 0) {
       const price = quantity * data[data.length - 1];
-      onChangeProducts(id, quantity, price);
+      buyProduct(id, quantity, price);
     }
   };
 
